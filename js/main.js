@@ -9,7 +9,16 @@ filterSelection("all")
 function filterSelection(c) {
   var x, i;
   x = document.getElementsByClassName("filterDiv");
-  if (c == "all") c = "";
+  var results_row = document.getElementById('filter-results-row')
+  if (c == "all") {
+    c = "";
+    if (results_row.classList.contains('flex', 'flex-column')) results_row.classList.remove('flex', 'flex-column');
+  }
+
+  if (c.length > 0) {
+    if (!results_row.classList.contains('flex', 'flex-column')) results_row.classList.add('flex', 'flex-column')
+  }
+
   for (i = 0; i < x.length; i++) {
     fruitRemoveClass(x[i], "show");
     if (x[i].className.indexOf(c) > -1) fruitAddClass(x[i], "show");
