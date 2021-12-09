@@ -12,7 +12,11 @@ function filterSelection(c) {
   if (c == "all") c = "";
   for (i = 0; i < x.length; i++) {
     fruitRemoveClass(x[i], "show");
-    if (x[i].className.indexOf(c) > -1) fruitAddClass(x[i], "show");
+    x[i].parentElement.classList.add('d-none')
+    if (x[i].className.indexOf(c) > -1) {
+      fruitAddClass(x[i], "show")
+      x[i].parentElement.classList.remove("d-none")
+    };
   }
 }
 
